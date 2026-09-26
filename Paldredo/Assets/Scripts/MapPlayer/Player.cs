@@ -41,6 +41,15 @@ public class Player : MonoBehaviour
         {
             transform.Translate(Vector3.right * MoveSpeed * Time.deltaTime);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            MoveSpeed = 10f;
+        }
+        else
+        {
+            MoveSpeed = 5f;
+        }
     }
 
     void Interact()
@@ -57,11 +66,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            _zoomTarget = new Vector3(0, 77, 2);
+            _zoomTarget = new Vector3(0, 77, 0);
         }
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            _zoomTarget = new Vector3(0, 20, 2);
+            _zoomTarget = new Vector3(0, 20, 0);
         }
 
         PlayerCam.transform.localPosition = Vector3.Lerp(PlayerCam.transform.localPosition, _zoomTarget, Time.deltaTime * ZoomSpeed);
